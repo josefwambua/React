@@ -1,0 +1,49 @@
+:root{
+    background-color: burlywood;
+}
+.App {
+    font-family: Arial, sans-serif;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    
+  }
+  
+  .App h1 {
+    color: #333;
+    border-bottom: 2px solid #333;
+    padding-bottom: 10px;
+  }
+  
+  .user-card {
+    margin-bottom: 20px;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+  }
+  
+  .user-card h2 {
+    color: #444;
+    margin-bottom: 10px;
+  }
+  
+  .user-card a {
+    color: #0066cc;
+  }
+  
+  .user-details {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+  }
+  
+  .user-details th,
+  .user-details td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: left;
+  }
+  
+  .user-details thead tr {
+    background-color: #f2f2f2;
+  }
