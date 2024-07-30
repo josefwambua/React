@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import "./index.css";
+import Loading from "./Loading";
 import axios from "axios";
 class App extends Component {
   constructor(props) {
@@ -12,11 +13,15 @@ class App extends Component {
     };
   }
   getUsers() {
+    this.setState({
+      loading: true}
+    )
     axios("https://api.randomuser.me/?nat=US&results=5").then((response) =>
       // rendering changes using useState/ update changes
       // provides instant changes when user makes changes to the state
       this.setState({
         users: response.data.results,
+        loading: false
       })
     );
   }
@@ -121,7 +126,8 @@ class App extends Component {
                   </table>
                 </div>
               ))
-            : "loading"}
+            : <Loading message="woooow" />
+            }
         </div>
       </div>
     );
@@ -129,3 +135,4 @@ class App extends Component {
 }
 
 export default App;
+ 
