@@ -1,25 +1,37 @@
-import logo from './logo.svg';
-import './App.css';
+import React, {useState, useEffect } from "react";
 
-function App() {
+const App = () => {
+  // state
+  const [news, setNews] = useState([]);
+  const [searchQuery, setSearchQuery] = useState('kenya-politics');
+
+
+  const handleChange = (e) => {
+    setSearchQuery(e.target.value);
+  }
+  // fetch news
+  const fetchNews = () => {
+    fetch(`http://hn.algolia.com/api/v1/search?query=${searchQuery}`)
+      .then(result => result.json())
+      .then(data => setNews(data.hits))
+      .catch(err => console.error(err))
+  };
+  useEffect(()=> {
+    fetchNews ()
+  },
+  [searchQuery]);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <h2>
+        News
+      </h2>
+      <form>
+      <input type="text" value={searchQuery} onChange={handleChange}/>        <button>Search</button>
+      </form>
+      {news.map((n,i) => (<p key={i}>{n.title}</p>))}
     </div>
-  );
-}
+  )
+};
 
 export default App;
